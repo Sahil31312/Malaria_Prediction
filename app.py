@@ -3325,31 +3325,3 @@ with st.sidebar.expander("How to Run", icon="💡"):
     3. **Load models** from Home page.
     4. **Start predicting!**
     """)
-
-
-
-
-jupyterlab_pygments~=0.3.0
-pip~=25.3
-python-box~=7.3.2
-configparser~=7.2.0
-attrs~=23.2.0
-distro~=1.9.0
-PySocks~=1.7.1
-protobuf~=4.21.12
-pyOpenSSL~=25.1.0
-cryptography~=43.0.0
-filelock~=3.14.0
-redis~=4.3.4
-streamlit~=1.52.1
-pandas~=2.3.3
-numpy~=2.2.4
-joblib~=1.5.2
-matplotlib~=3.10.8
-seaborn~=0.13.2
-plotly~=6.5.0
-scikit-learn~=1.8.0
-pillow~=11.1.0
-nbformat~=5.9.1
-nbconvert~=7.16.6
-ipython~=8.20.0
