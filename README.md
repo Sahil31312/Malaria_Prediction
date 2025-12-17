@@ -63,10 +63,6 @@ pip install -r requirements.txt
 streamlit run app.py 
 
 
-## 📸 Preview
-| **Home Dashboard** | **Prediction Interface** | **Model Analytics** |
-|:---:|:---:|:---:|
-| <img src="[https://via.placeholder.com/400x250/1E3A8A/FFFFFF?text=Home+Dashboard](https://github.com/Sahil31312/Malaria_Prediction/blob/main/Screenshot%20From%202025-12-18%2001-49-44.png)" width="400"> | <img src="https://via.placeholder.com/400x250/3B82F6/FFFFFF?text=Prediction+Interface" width="400"> | <img src="https://via.placeholder.com/400x250/10B981/FFFFFF?text=Model+Analytics" width="400"> |
 
 
 project Link
