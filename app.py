@@ -24,7 +24,7 @@ import plotly.graph_objects as go
 import json
 import sys
 import os
-from code_editor import code_editor
+
 
 
 # Set page configuration
