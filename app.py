@@ -27,7 +27,7 @@ import os
 
 
 
-# Set page configuration
+#  page configuration
 st.set_page_config(
     page_title="Malaria Prediction System",
     page_icon="🦟",
@@ -35,7 +35,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Add custom CSS
+#   custom CSS
 st.markdown("""
 <style>
     .main-header {
@@ -141,8 +141,8 @@ st.sidebar.markdown("---")
 menu = ["🏠 Home", "🔍 Predict Malaria", "📊 Model Analysis", "📈 Data Insights","🛠️ Data Preprocessing", "ℹ️ About"]
 choice = st.sidebar.selectbox("Navigation", menu)
 
-# Home Page
-# Home Page - Dashboard Style
+ 
+# Home Page 
 if choice == "🏠 Home":
 
     # =========================
@@ -385,7 +385,7 @@ elif choice == "🔍 Predict Malaria":
                 # You can add more symptoms here if your model supports them
                 pass
 
-        # Create symptoms dictionary
+        # Create symptoms dictionary to take user input
         symptoms = {
             'Age': age,
             'Gender': gender_encoded,
@@ -400,7 +400,7 @@ elif choice == "🔍 Predict Malaria":
             'Diarrhea': 1 if diarrhea else 0
         }
 
-        # Display selected symptoms
+        # Display selected symptoms for user
         st.markdown("---")
         st.subheader("Selected Symptoms Summary")
 
@@ -415,7 +415,7 @@ elif choice == "🔍 Predict Malaria":
         else:
             st.info("No symptoms selected")
 
-        # Prediction button
+        # Prediction button ui 
         st.markdown("---")
         if st.button("🔍 Predict Malaria", type="primary", width='stretch'):
             with st.spinner("Analyzing symptoms..."):
@@ -440,7 +440,7 @@ elif choice == "🔍 Predict Malaria":
                     # Replace with:
                     features_scaled = scaler.transform(features_df)
                     features_scaled_df = pd.DataFrame(features_scaled,
-                                                      columns=feature_names)  # Use your actual feature names
+                                                      columns=feature_names)   
                     prediction = model.predict(features_scaled_df)[0]
 
                     # Get probabilities if available
@@ -462,7 +462,7 @@ elif choice == "🔍 Predict Malaria":
                 except Exception as e:
                     st.error(f"Prediction error: {e}")
 
-        # Display prediction results
+        # Display prediction results for user
         if st.session_state.prediction_made and st.session_state.current_prediction:
             pred_data = st.session_state.current_prediction
             is_positive = pred_data['result'] == 1
@@ -529,7 +529,7 @@ elif choice == "🔍 Predict Malaria":
                 with col_detail2:
                     st.metric("Probability of No Malaria", f"{prob_negative:.2%}")
 
-            # Recommendations
+            # Recommendations content for user this is static content 
             st.markdown("---")
             st.subheader("📋 Recommendations")
 
@@ -565,7 +565,7 @@ elif choice == "🔍 Predict Malaria":
                 4. **High-risk areas**: Consider prophylactic medication if traveling
                 """)
 
-            # Export option
+            # Export option and button
             st.markdown("---")
             col_exp1, col_exp2, col_exp3 = st.columns([2, 1, 2])
             with col_exp2:
@@ -583,7 +583,7 @@ elif choice == "🔍 Predict Malaria":
                         "timestamp": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S")
                     }
 
-                    # Convert to DataFrame for download
+                    # Convert to DataFrame for download for future use
                     report_df = pd.DataFrame([report])
                     csv = report_df.to_csv(index=False)
 
@@ -652,7 +652,7 @@ elif choice == "📊 Model Analysis":
             st.dataframe(comparison_df.style.highlight_max(subset=['Test Accuracy'], color='lightgreen'),
                          width='stretch')
 
-            # Plot comparison
+            # Plot comparison results
             fig, ax = plt.subplots(figsize=(10, 6))
             x = np.arange(len(comparison_df))
             width = 0.35
@@ -729,13 +729,12 @@ elif choice == "📈 Data Insights":
         # Symptom Frequency Analysis
         st.subheader("📊 Symptom Frequency in Malaria Cases")
 
-        # You can add your actual data analysis here
-        # For now, let's create some example insights
+ 
 
         col1, col2 = st.columns(2)
 
         with col1:
-            # Symptom prevalence chart (example data)
+            # Symptom prevalence chart example data
             symptoms_data = {
                 'Fever': 85,
                 'Chills': 78,
@@ -762,10 +761,10 @@ elif choice == "📈 Data Insights":
             st.pyplot(fig)
 
         with col2:
-            # Age distribution (example)
+            # Age distribution  
             st.markdown("### 👥 Age Distribution")
 
-            # Create example age distribution
+            # Create  age distribution
             age_groups = ['0-5', '6-15', '16-30', '31-50', '51+']
             malaria_cases = [15, 25, 35, 20, 5]
 
@@ -818,7 +817,7 @@ elif choice == "📈 Data Insights":
 
         st.pyplot(fig)
 
-        # Geographic Distribution (example)
+        # Geographic Distribution  
         st.subheader("🗺️ Geographic Hotspots")
 
         hotspots = {
@@ -897,8 +896,7 @@ print("Libraries imported successfully!")
 
     def loadDataset():
         st.write("### 2 Load and Explore Dataset")
-        # Load your dataset - CHANGE THE FILENAME TO YOUR ACTUAL FILE
-              # Replace with your filename
+    
         st.code(""" 
 # Load your dataset - CHANGE THE FILENAME TO YOUR ACTUAL FILE
 df = pd.read_csv('https://raw.githubusercontent.com/Sahil31312/Malaria_Prediction/refs/heads/main/realistic_malaria_dataset.csv')
@@ -1014,15 +1012,15 @@ else:
 
 
         non_numeric_cols = df_processed.select_dtypes(include=['object', 'category']).columns.tolist()
-        # If there are categorical variables, let's handle them
+        # If there are categorical variables, let's handle them properly 
         if non_numeric_cols:
             st.code("Handling categorical variables...")
 
-            # Use LabelEncoder for categorical columns
+            # Use LabelEncoder for categorical columns from sklearn library
             label_encoders = {}
 
             for col in non_numeric_cols:
-                # Don't encode if it's already the target variable or if it's supposed to be numeric
+                # Don't encode if it's already the target variable or if it's supposed to be numeric no need brother jan
                 if col != 'Positive_Malaria':
                     st.code(f"Encoding column: {col}")
                     le = LabelEncoder()
@@ -1030,7 +1028,7 @@ else:
                     label_encoders[col] = le
                     st.code(f"  Encoded values mapping: {dict(zip(le.classes_, le.transform(le.classes_)))}")
 
-            # Check if Positive_Malaria needs encoding
+            # Check if Positive_Malaria needs encoding check it 
             if 'Positive_Malaria' in non_numeric_cols:
                 st.code("Encoding target variable 'Positive_Malaria'...")
                 le_target = LabelEncoder()
@@ -1067,7 +1065,7 @@ else:
         if 'df_processed' not in st.session_state:
             st.error(
                 "⚠️ Processed data not found! Please run the previous preprocessing steps first (e.g., Handle Categorical Variables).")
-            st.stop()  # Stops execution here until data is ready
+            st.stop()  # Stops execution here until data is ready top use it janana 
             return
         df_processed = st.session_state.df_processed
 
@@ -1076,7 +1074,7 @@ else:
         st.code(missing_values)
         st.session_state.missing_values = missing_values
 
-        # Visualize missing values if any
+        # Visualize missing values if any found in dataset
         if missing_values.sum() > 0:
             plt.figure(figsize=(10, 6))
             sns.heatmap(df_processed.isnull(), yticklabels=False, cbar=False, cmap='viridis')
@@ -1113,7 +1111,7 @@ if target_col in df_processed.columns and df_processed[target_col].isnull().sum(
 
 print("Missing values after handling:")
 print(df_processed.isnull().sum())""")
-        # Handle missing values if any
+        # Handle missing values if any found lala jan
         missing_values = st.session_state.missing_values
         if missing_values.sum() > 0:
             st.code("Handling missing values...")
@@ -1228,7 +1226,7 @@ except Exception as e:
     print("Showing first few rows of processed data instead:")
     display(df_processed.head())""")
 
-        # Now calculate correlation matrix
+        # Now calculate correlation matrix to find new 
         try:
             df_processed = st.session_state.df_processed
             correlation_matrix = df_processed.corr()
@@ -1373,8 +1371,8 @@ if 'Positive_Malaria' in df_processed.columns:
 else:
     print("Error: 'Positive_Malaria' column not found in dataset")
     print("Available columns:", df_processed.columns.tolist())""")
-
-        # Separate features and target
+ 
+        # Separate features and target for prediction lala janana ow janana
         df_processed = st.session_state.df_processed
         if 'Positive_Malaria' in df_processed.columns:
             X = df_processed.drop('Positive_Malaria', axis=1)  # Features
@@ -1682,7 +1680,7 @@ print("All models trained successfully!")""")
 
         st.session_state.models = models
 
-        # Dictionary to store results
+        # Dictionary to store results tik da ja ow kana 
         results = {}
         predictions = {}
 
@@ -2287,11 +2285,11 @@ if 'results' in locals() and len(results) > 0:
 else:
     print("Results dictionary not found or empty. Please run model training cells first.")""")
 
-        # First, let's ensure we have the best model identified
+        # First, let's ensure we have the best model identified for the prediction and keep using it
         st.code("Checking available models and selecting the best one...")
         results = st.session_state.results
         if 'results' in locals() and len(results) > 0:
-            # Find the model with highest test accuracy
+            # Find the model with highest test accuracy mean model that give goog results
             best_model_name = None
             best_accuracy = -1
 
@@ -2311,7 +2309,7 @@ else:
                 import os
 
 
-                # Create a directory for saving models if it doesn't exist
+                # Create a directory for saving models if it doesn't exist for future use and prediction 
                 if not os.path.exists('saved_modelsApp'):
                     os.makedirs('saved_modelsApp')
 
@@ -2520,12 +2518,12 @@ else:
         else:
             print("best_model not found. Please run previous cells first.")''', language='python')
 
-        # Now test the prediction function with the fixed best_model
+        # Now test the prediction function  
         st.code("Testing Prediction Function with Fixed Model:")
 
 
         if 'best_model' in locals():
-            # Update the prediction function to use our fixed variables
+            # Update the prediction function  
             def predict_malaria_fixed(symptoms_dict):
                 """
                 Predict malaria based on symptoms
@@ -2554,7 +2552,7 @@ else:
                 # Create a dataframe with all features
                 features_df = pd.DataFrame(columns=X.columns)
 
-                # Initialize with zeros for all features
+                # Initialize with zeros for all features by defualt jan qand am
                 for col in X.columns:
                     features_df.loc[0, col] = 0
 
@@ -2601,11 +2599,11 @@ else:
 
                 return result
 
-            # Test with a complete example
+       
             st.code("\nTest 1: Complete example with all features")
             complete_example = {
                 'Age': 30,
-                'Gender': 1,  # Assuming 1=Male, 0=Female (check your encoding)
+                'Gender': 1,   
                 'Fever': 1,
                 'Headache': 1,
                 'Chills': 1,
@@ -2699,7 +2697,7 @@ if 'best_model_name' in locals() and best_model_name in models:
     
     print(f"Tuning hyperparameters for: {best_model_name}")
     
-    # Define parameter grids based on model type
+ 
     param_grids = {
         'Random Forest': {
             'n_estimators': [50, 100, 200],
@@ -3130,6 +3128,8 @@ else:
             st.code("Model not available for summary.")
 
 
+
+    # calling all the stupid functions here fuck all them fuck programming
 
     if __name__ == "__main__":
         library()
