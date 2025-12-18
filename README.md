@@ -67,3 +67,8 @@ streamlit run app.py
 
 project Link
 https://malariaprediction-yhr7p7wrw7xpkiwd5fc4yy.streamlit.app/
+
+## ⭐ If you like this project, give it a star!
+### It helps me know this project is useful and keeps it active.  
+[![GitHub stars](https://img.shields.io/github/stars/Sahil31312/Malaria_Prediction?style=social&label=Star&logo=github)](https://github.com/Sahil31312/Malaria_Prediction/stargazers)
+
