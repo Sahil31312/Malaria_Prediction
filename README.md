@@ -3,7 +3,7 @@
 ## 📋 Project Overview
 A machine learning-based web application for predicting malaria infection risk based on patient symptoms and demographic information.
 
-**Live Demo**: [Streamlit App Link]
+**Live Demo**:
 **GitHub Repository**: [GitHub Link]
 
 ## 🎯 Key Features
